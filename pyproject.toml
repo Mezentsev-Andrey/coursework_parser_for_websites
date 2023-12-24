@@ -29,7 +29,21 @@ exclude = '.venv'
 
 [tool.black]
 line-length = 119
-exclude = '.venv'
+exclude = '''
+(
+  /(
+      \.eggs         # исключить несколько общих каталогов в
+    | \.git          # корне проекта
+    | \.hg
+    | \.mypy_cache
+    | \.tox
+    | \.venv
+    | dist
+  )/
+  | foo.py           # также отдельно исключить файл с именем foo.py в
+                     # корне проекта
+)
+'''
 
 [tool.isort]
 line_length = 79
